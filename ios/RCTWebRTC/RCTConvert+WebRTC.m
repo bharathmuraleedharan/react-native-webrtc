@@ -109,6 +109,16 @@
     config.iceServers = iceServers;
   }
 
+  if (json[@"bundlePolicy"]) {
+    if ([json[@"bundlePolicy"] isEqualToString:@"max-bundle"]) {
+      config.bundlePolicy = RTCBundlePolicyMaxBundle;
+    } else if ([json[@"bundlePolicy"] isEqualToString:@"max-compat"]) {
+      config.bundlePolicy = RTCBundlePolicyMaxCompat;
+    } else if ([json[@"bundlePolicy"] isEqualToString:@"balanced"]) {
+      config.bundlePolicy = RTCBundlePolicyBalanced;
+    }
+  }
+
   // TODO: Implement the rest of the RTCConfigure options ...
 
   return config;
