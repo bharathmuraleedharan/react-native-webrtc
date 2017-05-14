@@ -44,7 +44,7 @@ type RTCIceConnectionState =
 const DEFAULT_SDP_CONSTRAINTS = {
   mandatory: {
     OfferToReceiveAudio: true,
-    OfferToReceiveVideo: true,
+    OfferToReceiveVideo: false,
   }
 };
 
