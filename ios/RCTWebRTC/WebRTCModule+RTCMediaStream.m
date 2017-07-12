@@ -40,9 +40,9 @@ typedef void (^NavigatorUserMediaSuccessCallback)(RTCMediaStream *mediaStream);
 
 - (RTCMediaConstraints *)defaultMediaStreamConstraints {
   NSDictionary *mandatoryConstraints
-      = @{ kRTCMediaConstraintsMinWidth     : @"1280",
-           kRTCMediaConstraintsMinHeight    : @"720",
-           kRTCMediaConstraintsMinFrameRate : @"30" };
+      = @{ kRTCMediaConstraintsMaxWidth     : @"600",
+           kRTCMediaConstraintsMaxHeight    : @"480",
+           kRTCMediaConstraintsMaxFrameRate : @"15" };
   RTCMediaConstraints* constraints =
   [[RTCMediaConstraints alloc]
    initWithMandatoryConstraints:mandatoryConstraints
@@ -216,6 +216,7 @@ RCT_EXPORT_METHOD(getUserMedia:(NSDictionary *)constraints
      successCallback:(NavigatorUserMediaSuccessCallback)successCallback
        errorCallback:(NavigatorUserMediaErrorCallback)errorCallback
          mediaStream:(RTCMediaStream *)mediaStream {
+  
   id videoConstraints = constraints[@"video"];
   AVCaptureDevice *videoDevice;
   if ([videoConstraints isKindOfClass:[NSDictionary class]]) {
