@@ -57,7 +57,7 @@ const RTCView = {
   },
 };
 
-const View = requireNativeComponent('RTCVideoView', RTCView, {nativeOnly: {
+const View = requireNativeComponent && requireNativeComponent('RTCVideoView', RTCView, {nativeOnly: {
   testID: true,
   accessibilityComponentType: true,
   renderToHardwareTextureAndroid: true,
