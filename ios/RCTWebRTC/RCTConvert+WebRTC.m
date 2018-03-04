@@ -109,6 +109,50 @@
     config.iceServers = iceServers;
   }
 
+  if ([json[@"bundlePolicy"] isEqualToString:@"max-bundle"]) {
+    config.bundlePolicy = RTCBundlePolicyMaxBundle;
+  } else if ([json[@"bundlePolicy"] isEqualToString:@"max-compat"]) {
+    config.bundlePolicy = RTCBundlePolicyMaxCompat;
+  } else if ([json[@"bundlePolicy"] isEqualToString:@"balanced"]) {
+    config.bundlePolicy = RTCBundlePolicyBalanced;
+  } else {
+    config.bundlePolicy = RTCBundlePolicyBalanced;
+  }
+
+  if ([json[@"rtcpMuxPolicy"] isEqualToString:@"negotiate"]) {
+    config.rtcpMuxPolicy = RTCRtcpMuxPolicyNegotiate;
+  } else if ([json[@"rtcpMuxPolicy"] isEqualToString:@"require"]) {
+    config.rtcpMuxPolicy = RTCRtcpMuxPolicyRequire;
+  } else {
+    config.rtcpMuxPolicy = RTCRtcpMuxPolicyRequire;
+  }
+
+  if ([json[@"tcpCandidatePolicy"] isEqualToString:@"enabled"]) {
+    config.tcpCandidatePolicy = RTCTcpCandidatePolicyEnabled;
+  } else if ([json[@"tcpCandidatePolicy"] isEqualToString:@"disable"]) {
+    config.tcpCandidatePolicy = RTCTcpCandidatePolicyDisabled;
+  } else {
+    config.tcpCandidatePolicy = RTCTcpCandidatePolicyEnabled;
+  }
+
+  if ([json[@"candidateNetworkPolicy"] isEqualToString:@"all"]) {
+    config.candidateNetworkPolicy = RTCCandidateNetworkPolicyAll;
+  } else if ([json[@"tcpCandidatePolicy"] isEqualToString:@"low-cost"]) {
+    config.candidateNetworkPolicy = RTCCandidateNetworkPolicyLowCost;
+  } else {
+    config.candidateNetworkPolicy = RTCCandidateNetworkPolicyAll;
+  }
+
+  if ([json[@"continualGatheringPolicy"] isEqualToString:@"gather-once"]) {
+    config.continualGatheringPolicy = RTCContinualGatheringPolicyGatherOnce;
+  } else if ([json[@"continualGatheringPolicy"] isEqualToString:@"gather-continually"]) {
+    config.continualGatheringPolicy = RTCContinualGatheringPolicyGatherContinually;
+  } else {
+    config.continualGatheringPolicy = RTCContinualGatheringPolicyGatherOnce;
+  }
+
+  config.iceConnectionReceivingTimeout = 10000;
+
   // TODO: Implement the rest of the RTCConfigure options ...
 
   return config;
